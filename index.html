@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <iconify-icon icon="material-symbols:close-rounded"></iconify-icon>
+
+    <title>Frontend Mentor | URL shortening API Challenge</title>
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html"><img src="/images/logo.svg" alt="company-logo" /></a>
+      <i id="bar" class="fa-solid fa-bars"></i>
+      <div class="navlinks">
+        <ul id="navbar">
+          <i id="close" class="fa-sharp fa-solid fa-xmark"></i>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Resources</a></li>
+          <hr />
+          <li><a class="log" href="#">Login</a></li>
+          <li><a class="sig" href="#">Sign up</a></li>
+        </ul>
+      </div>
+      <div class="reg">
+        <button class="login"><a href="#">Login</a></button>
+        <button class="sign"><a href="#">Sign Up</a></button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="intro">
+        <h1>More than just shorter links</h1>
+        <p>
+          Build your brand’s recognition and get detailed <br />
+          insights on how your links are performing.
+        </p>
+        <button><a href="#">Get Started</a></button>
+      </div>
+      <div class="hero-img">
+        <img src="/images/illustration-working.svg" alt="" />
+      </div>
+    </section>
+
+    <section class="url">
+      <div class="main">
+        <div class="shorten">
+          <div class="link">
+            <input type="text" placeholder="Shorten a link here..." id="urlinput" />
+            <p class="error">please add a link</p>
+          </div>
+          <button onclick={options}><a href="#" id="link-shorten">Shorten It!</a></button>
+        </div>
+        <div class="result-link" id="result-link"></div>
+      </div>
+
+      <div class="stats">
+          <h2>Advanced Statistics</h2>
+          <p>
+            Track how your links are performing across the web with <br />
+            our advanced statistics dashboard.
+          </p>
+        
+        <div class="feature">
+          <div class="brand">
+            <img src="/images/icon-brand-recognition.svg" alt="brand-logo" />
+            <div class="brand-info">
+              <h3>Brand Recognition</h3>
+              <p>
+                Boost your brand recognition with each click. Generic links
+                don’t mean a thing. Branded links help instil confidence in your
+                content.
+              </p>
+            </div>
+          </div>
+          <div class="hr1"></div>
+          <div class="detail">
+            <img src="/images/icon-detailed-records.svg" alt="record-logo" />
+            <div class="detail-info">
+              <h3>Detailed Records</h3>
+              <p>
+                Gain insights into who is clicking your links. Knowing when and
+                where people engage with your content helps inform better
+                decisions.
+              </p>
+            </div>
+          </div>
+          <div class="hr2"></div>
+          <div class="custom">
+            <img src="/images/icon-fully-customizable.svg" alt="custom-logo" />
+            <div class="custom-info">
+              <h3>Fully Customizable</h3>
+              <p>
+                Improve brand awareness and content discoverability through
+                customizable links, supercharging audience engagement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="boost">
+      <h4>Boost your links today</h4>
+      <button><a href="#">Get Started</a></button>
+    </section>
+
+    <footer>
+      <div class="logo">
+        <a href="index.html"
+          ><img
+            src="/images/logo.svg"
+            alt="company-logo"
+            style="
+              filter: invert(100%) sepia(51%) saturate(0%) hue-rotate(304deg)
+                brightness(111%) contrast(98%);
+            "
+        /></a>
+      </div>
+      <div class="features">
+        <h5>Features</h5>
+        <ul>
+          <li><a href="#">Link Shortening</a></li>
+          <li><a href="#">Branded Links</a></li>
+          <li><a href="#">Analytics</a></li>
+        </ul>
+      </div>
+      <div class="resources">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Developers</a></li>
+          <li><a href="#">Support</a></li>
+        </ul>
+      </div>
+      <div class="company">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="socials">
+        <a href="#"
+          ><img
+            src="/images/icon-facebook.svg"
+            alt="facebook-logo"
+            style="width: 15%"
+        /></a>
+        <a href="#"
+          ><img
+            src="/images/icon-twitter.svg"
+            alt="twitter-logo"
+            style="width: 15%"
+        /></a>
+        <a href="#"
+          ><img
+            src="/images/icon-pinterest.svg"
+            alt="pinterest-logo"
+            style="width: 15%"
+        /></a>
+        <a href="#"
+          ><img
+            src="/images/icon-instagram.svg"
+            alt="instagram-logo"
+            style="width: 15%"
+        /></a>
+      </div>
+    </footer>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">@infiniteltd</a>.
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
