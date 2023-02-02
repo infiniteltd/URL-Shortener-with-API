@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+// RESET STYLE //
+
 *::before,
 *::after {
   box-sizing: border-box;
@@ -54,49 +55,77 @@ ul {
   margin: 0;
   padding: 0;
 }
-
 a {
   text-decoration: none;
 }
+
+// COLORS //
+
+//Primary
+
+$Cyan: hsl(180, 66%, 49%);
+$Cyan-white: #7ce4e4;
+$Dark-Violet: hsl(257, 27%, 26%);
+$white: white;
+
+//Secondary
+
+$Red: hsl(0, 87%, 67%);
+
+//Neutral
+
+$Gray: hsl(0, 0%, 75%);
+$light-Gray: #f0f1f6;
+$Grayish-Violet: hsl(257, 7%, 63%);
+$Very-Dark-Blue: hsl(255, 11%, 22%);
+$Very-Dark-Violet: hsl(260, 8%, 14%);
+
+// breakpoint //
+
+@mixin larger-screen {
+  @media (min-width: 58.125rem) {
+    @content;
+  }
+}
+
+// FONT //
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
 
 body {
   font-family: "Poppins", sans-serif;
 }
 
+// STYLE //
 main,
 header {
   margin: 0 1rem;
-}
-@media (min-width: 58.125rem) {
-  main,
-  header {
+  @include larger-screen() {
     margin: auto;
     max-width: 95rem;
   }
 }
-
-@media (min-width: 58.125rem) {
-  .block {
+.block {
+  @include larger-screen() {
     margin: 0 4rem;
   }
 }
 
-.logo-header path {
-  fill: hsl(257deg, 27%, 26%);
-}
+// HEADER //
 
+.logo-header path {
+  fill: $Dark-Violet;
+}
 .wrapper-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0;
-}
-@media (min-width: 58.125rem) {
-  .wrapper-header {
+  @include larger-screen() {
     gap: 3rem;
   }
 }
-
+// hamburger //
 .hamburger {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
@@ -106,41 +135,42 @@ header {
   z-index: 110;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-}
-@media (min-width: 58.125rem) {
-  .hamburger {
+  @include larger-screen {
     display: none;
   }
-}
-.hamburger:hover {
-  transform: scale(1.1);
-}
-.hamburger.active .bar-menu:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active .bar-menu:nth-child(1) {
-  background-color: hsl(0deg, 87%, 67%);
-  transform: translateY(0.45rem) rotate(-135deg);
-}
-.hamburger.active .bar-menu:nth-child(3) {
-  background-color: hsl(0deg, 87%, 67%);
-  transform: translateY(-0.45rem) rotate(135deg);
-}
+  &:hover {
+    transform: scale(1.1);
+  }
 
+  &.active {
+    .bar-menu:nth-child(2) {
+      opacity: 0;
+    }
+    .bar-menu:nth-child(1) {
+      background-color: $Red;
+      transform: translateY(0.45rem) rotate(-135deg);
+    }
+    .bar-menu:nth-child(3) {
+      background-color: $Red;
+      transform: translateY(-0.45rem) rotate(135deg);
+    }
+  }
+}
 .bar-menu {
   font: inherit;
   box-sizing: border-box;
   display: block;
-  background-color: hsl(257deg, 7%, 63%);
+  background-color: $Grayish-Violet;
   width: 1.5rem;
   height: 0.2rem;
   border-radius: 2px;
   margin: 4px auto;
   transition: all 0.3s ease-in-out;
 }
+// menu //
 
 .wrap-menu {
-  background-color: hsl(257deg, 27%, 26%);
+  background-color: $Dark-Violet;
   padding: 2rem 1rem;
   margin: 0 auto;
   border-radius: 0.5rem;
@@ -153,13 +183,11 @@ header {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
-}
-.wrap-menu.active {
-  opacity: 1;
-  visibility: visible;
-}
-@media (min-width: 58.125rem) {
-  .wrap-menu {
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  @include larger-screen {
     visibility: visible;
     opacity: 1;
     position: initial;
@@ -172,29 +200,23 @@ header {
     justify-content: space-between;
   }
 }
-
 .wrap-menu a {
-  color: white;
+  color: $white;
   font-weight: 700;
-}
-@media (min-width: 58.125rem) {
-  .wrap-menu a {
-    color: hsl(257deg, 7%, 63%);
+  @include larger-screen {
+    color: $Grayish-Violet;
     font-weight: 700;
     font-size: 1rem;
     transition: color 0.2s ease-in-out;
-  }
-  .wrap-menu a:hover {
-    color: hsl(257deg, 27%, 26%);
+    &:hover {
+      color: $Dark-Violet;
+    }
   }
 }
-
 .wrap-menu li {
   width: 100%;
   text-align: center;
-}
-@media (min-width: 58.125rem) {
-  .wrap-menu li {
+  @include larger-screen() {
     width: inherit;
   }
 }
@@ -205,32 +227,29 @@ header {
   justify-content: center;
   align-items: center;
   gap: 1rem;
-}
-@media (min-width: 58.125rem) {
-  .wrap-menu ul {
+  @include larger-screen() {
     flex-direction: row;
   }
 }
 
 .btn {
   transition: background-color 0.2s ease-in-out;
-}
-.btn:hover {
-  background-color: #7ce4e4;
+  &:hover {
+    background-color: $Cyan-white;
+  }
 }
 
 .sign-up-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background: hsl(180deg, 66%, 49%);
+  background: $Cyan;
   padding: 0.5rem 0;
   width: 100%;
   border-radius: 2rem;
-}
-@media (min-width: 58.125rem) {
-  .sign-up-button {
-    color: white !important;
+
+  @include larger-screen() {
+    color: $white !important;
     padding: 0.5rem;
     width: inherit;
     padding: 0.5rem 1rem;
@@ -243,14 +262,13 @@ header {
   height: 0.2px;
   opacity: 0.5;
   margin-block: 1rem;
-  background: hsl(257deg, 7%, 63%);
-}
-@media (min-width: 58.125rem) {
-  .menu-link::after {
+  background: $Grayish-Violet;
+  @include larger-screen() {
     display: none;
   }
 }
 
+// more than just section //
 .human-working-wrap {
   background-image: url(images/illustration-working.svg);
   background-size: cover;
@@ -258,9 +276,7 @@ header {
   background-position: top left;
   width: 100%;
   min-height: 20rem;
-}
-@media (min-width: 58.125rem) {
-  .human-working-wrap {
+  @include larger-screen() {
     max-width: 30rem;
     background-size: contain;
   }
@@ -276,9 +292,7 @@ header {
   gap: 2rem;
   margin: 2rem 0;
   overflow: hidden;
-}
-@media (min-width: 58.125rem) {
-  .more-than-just {
+  @include larger-screen {
     flex-direction: row-reverse;
     text-align: left;
     padding-block: 3rem;
@@ -290,32 +304,28 @@ header {
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-}
-@media (min-width: 58.125rem) {
-  .wrapper-more-than {
+  @include larger-screen {
     align-items: flex-start;
     flex-grow: 2;
   }
 }
-
 .more-than-just h1 {
   font-weight: 700;
-  color: hsl(257deg, 27%, 26%);
+  color: $Dark-Violet;
   font-size: 2rem;
   line-height: 2.25rem;
   letter-spacing: -1px;
-}
-@media (min-width: 58.125rem) {
-  .more-than-just h1 {
+  @include larger-screen {
     font-size: 4rem;
     line-height: 5rem;
   }
 }
 
 .more-than-just p {
-  color: hsl(257deg, 7%, 63%);
+  color: $Grayish-Violet;
 }
 
+// link app form section //
 .link-shorten-form {
   display: flex;
   flex-direction: column;
@@ -328,12 +338,10 @@ header {
   background-position-x: right;
   background-position-y: top;
   border-radius: 0.5rem;
-  background-color: hsl(257deg, 27%, 26%);
+  background-color: $Dark-Violet;
   margin: 1rem 0;
   gap: 1.25rem;
-}
-@media (min-width: 58.125rem) {
-  .link-shorten-form {
+  @include larger-screen() {
     flex-direction: row;
     padding: 2rem;
     background-image: url(images/bg-shorten-desktop.svg);
@@ -353,31 +361,18 @@ header {
   padding-left: 1rem;
   box-sizing: border-box;
   font-size: 1.125rem;
-}
-.link-input::-moz-placeholder {
-  color: hsl(0deg, 0%, 75%);
-}
-.link-input:-ms-input-placeholder {
-  color: hsl(0deg, 0%, 75%);
-}
-.link-input::placeholder {
-  color: hsl(0deg, 0%, 75%);
-}
-.link-input.active {
-  border: 2px solid hsl(0deg, 87%, 67%);
-  margin-bottom: 0;
-}
-.link-input.active::-moz-placeholder {
-  color: hsl(0deg, 87%, 67%);
-}
-.link-input.active:-ms-input-placeholder {
-  color: hsl(0deg, 87%, 67%);
-}
-.link-input.active::placeholder {
-  color: hsl(0deg, 87%, 67%);
-}
-@media (min-width: 58.125rem) {
-  .link-input {
+  &::placeholder {
+    color: $Gray;
+  }
+
+  &.active {
+    border: 2px solid $Red;
+    margin-bottom: 0;
+    &::placeholder {
+      color: $Red;
+    }
+  }
+  @include larger-screen() {
     padding-block: 1rem;
   }
 }
@@ -390,16 +385,15 @@ header {
 .error-msg {
   font-size: 0.75rem;
   font-style: italic;
-  color: hsl(0deg, 87%, 67%);
+  color: $Red;
   visibility: hidden;
   position: absolute;
   left: 0;
   bottom: -1.1rem;
+  &.active {
+    visibility: visible;
+  }
 }
-.error-msg.active {
-  visibility: visible;
-}
-
 .link-button {
   background: none;
   font-family: inherit;
@@ -409,19 +403,16 @@ header {
   cursor: pointer;
   padding-block: 0.5rem;
   width: 100%;
-  background-color: hsl(180deg, 66%, 49%);
+  background-color: $Cyan;
   font-weight: 700;
-  color: white;
+  color: $white;
   font-size: 1.125rem;
   border-radius: 0.5rem;
-}
-@media (min-width: 58.125rem) {
-  .link-button {
+  @include larger-screen() {
     max-width: 10rem;
     padding-block: 1rem;
   }
 }
-
 .resul-link {
   margin-block: 1rem;
   display: flex;
@@ -432,33 +423,20 @@ header {
   display: flex;
   flex-direction: column;
   background: white;
-  width: 100%;
+  width: calc(100%);
   padding-block: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.09);
   border-radius: 0.5rem;
   margin-block: 1rem;
-  -webkit-animation: shortened-anim 0.2s forwards ease-in-out;
   animation: shortened-anim 0.2s forwards ease-in-out;
   transform-origin: top;
-}
-@media (min-width: 58.125rem) {
-  .shortened-link {
+  @include larger-screen() {
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding-block: 0.5rem;
   }
 }
-
-@-webkit-keyframes shortened-anim {
-  from {
-    transform: scaley(0);
-  }
-  to {
-    transform: scaley(1);
-  }
-}
-
 @keyframes shortened-anim {
   from {
     transform: scaley(0);
@@ -467,14 +445,14 @@ header {
     transform: scaley(1);
   }
 }
+
 .link-wrapper {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+
   width: 100%;
-}
-@media (min-width: 58.125rem) {
-  .link-wrapper {
+  @include larger-screen() {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -482,17 +460,15 @@ header {
 }
 
 .yourlink {
-  color: hsl(255deg, 11%, 22%);
+  color: $Very-Dark-Blue;
   position: relative;
   margin: 0 1rem;
   padding-bottom: 1rem;
-  width: 90%;
+  width: calc(90%);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-@media (min-width: 58.125rem) {
-  .yourlink {
+  @include larger-screen() {
     padding-bottom: 0;
   }
 }
@@ -501,54 +477,47 @@ header {
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-top: 2px solid #f0f1f6;
-}
-@media (min-width: 58.125rem) {
-  .bar-link {
+  border-top: 2px solid $light-Gray;
+  @include larger-screen() {
     border-top: none;
     flex-direction: row;
   }
 }
-
 .ourlink {
   margin: 0 1rem;
   padding-block: 1rem;
-  color: hsl(180deg, 66%, 49%);
-  width: 90%;
+  color: $Cyan;
+  width: calc(90%);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-@media (min-width: 58.125rem) {
-  .ourlink {
+  @include larger-screen() {
     text-align: right;
   }
 }
-
 .copybutton {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   font: inherit;
-  background: hsl(180deg, 66%, 49%);
+  background: $Cyan;
   border: transparent;
   border-radius: 0.25rem;
   z-index: 110;
-  color: white;
+  color: $white;
   transition: all 0.2s ease-in-out;
   padding-block: 0.5rem;
   margin: 0 1rem;
   cursor: pointer;
-}
-@media (min-width: 58.125rem) {
-  .copybutton {
+  @include larger-screen() {
     padding: 0 2rem;
     height: 2.5rem;
     align-self: center;
   }
+  &.active {
+    background-color: $Very-Dark-Blue;
+  }
 }
-.copybutton.active {
-  background-color: hsl(255deg, 11%, 22%);
-}
+// section statistics //
 
 .statistics {
   padding-block: 3rem;
@@ -562,32 +531,27 @@ header {
 
 .statistics h2 {
   font-weight: 700;
-  color: hsl(257deg, 27%, 26%);
+  color: $Dark-Violet;
   letter-spacing: -1px;
-}
-@media (min-width: 58.125rem) {
-  .statistics h2 {
+  @include larger-screen() {
     font-size: 3rem;
   }
 }
 
 .statistics p {
-  color: hsl(257deg, 7%, 63%);
-}
-@media (min-width: 58.125rem) {
-  .statistics p {
+  color: $Grayish-Violet;
+  @include larger-screen() {
     max-width: 45ch;
   }
 }
 
+// section arguement //
 .argument-section {
   margin: 3rem 0;
   display: flex;
   flex-direction: column;
   gap: 6rem;
-}
-@media (min-width: 58.125rem) {
-  .argument-section {
+  @include larger-screen() {
     flex-direction: row;
     gap: 3rem;
     margin: auto;
@@ -595,113 +559,101 @@ header {
     padding-block: 4rem;
     min-height: 20rem;
     justify-content: space-between;
+
     gap: 4%;
     max-width: 95rem;
   }
 }
-
-@media (min-width: 58.125rem) {
-  .box-argu:nth-child(1) {
+.box-argu:nth-child(1) {
+  @include larger-screen() {
     align-self: start;
   }
 }
-
-@media (min-width: 58.125rem) {
-  .box-argu:nth-child(2) {
+.box-argu:nth-child(2) {
+  @include larger-screen() {
     align-self: center;
   }
 }
-
-@media (min-width: 58.125rem) {
-  .box-argu:nth-child(3) {
+.box-argu:nth-child(3) {
+  @include larger-screen() {
     align-self: end;
   }
 }
 
 .argument-section .box-argu {
-  background-color: white;
+  background-color: $white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.09);
   padding: 2rem;
   position: relative;
   border-radius: 0.5rem;
-}
-@media (min-width: 58.125rem) {
-  .argument-section .box-argu {
+  @include larger-screen() {
     max-width: 20rem;
     max-height: 18rem;
   }
 }
 
-.box-argu:nth-child(2)::before {
-  content: "";
-  height: 100%;
-  width: 0.5rem;
-  background: hsl(180deg, 66%, 49%);
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -100%);
-  z-index: -1;
-}
-@media (min-width: 58.125rem) {
-  .box-argu:nth-child(2)::before {
-    width: 100%;
-    height: 0.5rem;
-    top: 40%;
-    left: 0;
+.box-argu:nth-child(2) {
+  &::before {
+    content: "";
+    height: 100%;
+    width: 0.5rem;
+    background: $Cyan;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    z-index: -1;
+    @include larger-screen() {
+      width: 100%;
+      height: 0.5rem;
+      top: 40%;
+      left: 0;
+    }
   }
-}
-.box-argu:nth-child(2)::after {
-  content: "";
-  height: 100%;
-  width: 0.5rem;
-  background: hsl(180deg, 66%, 49%);
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, 100%);
-  z-index: -1;
-}
-@media (min-width: 58.125rem) {
-  .box-argu:nth-child(2)::after {
-    width: 100%;
-    height: 0.5rem;
-    bottom: 60%;
-    left: 100%;
+
+  &::after {
+    content: "";
+    height: 100%;
+    width: 0.5rem;
+    background: $Cyan;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    z-index: -1;
+    @include larger-screen() {
+      width: 100%;
+      height: 0.5rem;
+      bottom: 60%;
+      left: 100%;
+    }
   }
 }
 
 .box-argu p {
   text-align: center;
-  color: hsl(257deg, 7%, 63%);
-}
-@media (min-width: 58.125rem) {
-  .box-argu p {
+  color: $Grayish-Violet;
+  @include larger-screen() {
     text-align: left;
   }
 }
-
 .box-argu h3 {
   text-align: center;
   margin: 2rem 0 1rem 0;
-  color: hsl(257deg, 27%, 26%);
+  color: $Dark-Violet;
   letter-spacing: -1px;
-}
-@media (min-width: 58.125rem) {
-  .box-argu h3 {
+  @include larger-screen() {
     text-align: left;
   }
 }
-
 .icon-argument {
   transform: scale(0.8);
 }
-
 .arg-icon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background-color: hsl(257deg, 27%, 26%);
+  background-color: $Dark-Violet;
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -709,13 +661,12 @@ header {
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-@media (min-width: 58.125rem) {
-  .arg-icon {
+  @include larger-screen() {
     left: 25%;
   }
 }
 
+// section boost //
 .boost-section {
   background-image: url(images/bg-boost-mobile.svg);
   background-repeat: no-repeat;
@@ -727,10 +678,8 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: hsl(257deg, 27%, 26%);
-}
-@media (min-width: 58.125rem) {
-  .boost-section {
+  background-color: $Dark-Violet;
+  @include larger-screen() {
     background-image: url(images/bg-boost-desktop.svg);
   }
 }
@@ -745,18 +694,18 @@ header {
 .get-started-button {
   color: white;
   font-weight: 700;
-  background-color: hsl(180deg, 66%, 49%);
+  background-color: $Cyan;
   border-radius: 2rem;
   padding: 0.75rem 2rem 0.75rem 2rem;
   font-size: 1.125rem;
   max-width: 7rem;
+  &:hover {
+    background: $Cyan-white;
+  }
 }
-.get-started-button:hover {
-  background: #7ce4e4;
-}
-
+// FOOTER //
 footer {
-  background-color: hsl(260deg, 8%, 14%);
+  background-color: $Very-Dark-Violet;
 }
 
 footer h4 {
@@ -771,9 +720,7 @@ footer h4 {
   justify-content: center;
   gap: 1.5rem;
   padding-block: 2rem;
-}
-@media (min-width: 58.125rem) {
-  .social-link {
+  @include larger-screen() {
     padding-block: 1rem;
     gap: 1rem;
   }
@@ -785,9 +732,7 @@ footer h4 {
   justify-content: center;
   align-items: center;
   padding-block: 2rem;
-}
-@media (min-width: 58.125rem) {
-  .nav-footer {
+  @include larger-screen() {
     flex-direction: row;
     align-items: flex-start;
     gap: 8%;
@@ -796,40 +741,36 @@ footer h4 {
 }
 
 footer a {
-  color: hsl(0deg, 0%, 75%);
+  color: $Gray;
   font-weight: 500;
   transition: all 0.2s ease-in-out;
+  &:hover {
+    color: $Cyan;
+  }
 }
-footer a:hover {
-  color: hsl(180deg, 66%, 49%);
-}
-
 .link-social {
   display: block;
-}
-.link-social:hover path {
-  transition: all 0.2s ease-in-out;
-  fill: hsl(180deg, 66%, 49%);
+  &:hover {
+    path {
+      transition: all 0.2s ease-in-out;
+      fill: $Cyan;
+    }
+  }
 }
 
 footer li {
   text-align: center;
   margin: 0.5rem 0 0.5rem 0;
-}
-@media (min-width: 58.125rem) {
-  footer li {
+  @include larger-screen() {
     text-align: left;
   }
 }
-
 .logo-footer {
   padding-block: 1rem;
-  filter: invert(100%) sepia(31%) saturate(0%) hue-rotate(336deg)
-    brightness(107%) contrast(98%);
 }
 
-@media (min-width: 58.125rem) {
-  .wrapper-logo {
+.wrapper-logo {
+  @include larger-screen() {
     max-width: 23rem;
   }
-} /*# sourceMappingURL=style.css.map */
+}

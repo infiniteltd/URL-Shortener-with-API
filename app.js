@@ -1,25 +1,25 @@
-// responsive navbar
-const bar = document.getElementById('bar');
-const close = document.getElementById('close');
-const nav = document.getElementById('navbar');
+const hamburger = document.querySelector("#hamburger");
+const menu = document.querySelector("#menu");
 
-if (bar) {
-    bar.addEventListener('click', () => {
-        nav.classList.add('active');
-    });
-}
+// hamburger menu //
+hamburger.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  hamburger.classList.toggle("active");
 
-if (close) {
-    close.addEventListener('click', () => {
-        nav.classList.remove('active');
-    });
-}
+  const ariaExpanded = hamburger.getAttribute("aria-expanded");
 
-// validate url input
-const inputURL = document.getElementById("urlinput");
+  if (ariaExpanded === "true") {
+    hamburger.setAttribute("aria-expanded", false);
+  } else {
+    hamburger.setAttribute("aria-expanded", true);
+  }
+});
+
+// valid url form //
+const inputURL = document.querySelector("#link-input");
 function checkURL() {
   const urlValue = inputURL.value.trim();
-  const error = document.querySelector("error");
+  const error = document.querySelector("#js-error-msg");
   const shortenLink = async () => {
     const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${urlValue}`);
     const data = await res.json();
@@ -47,7 +47,6 @@ function checkURL() {
       const resultLink = document.createElement("div");
       resultLink.setAttribute("class", "shortened-link");
       sectionLink.appendChild(resultLink);
-
       // add html code for box for link //
       resultLink.innerHTML = `<div class="link-wrapper"><a class="yourlink" href="${originalLink}"> ${originalLink} </a>
       <div class="bar-link">
@@ -56,7 +55,6 @@ function checkURL() {
       <button class="copybutton btn" type="button">Copy</button></div></div>`;
 
       const linkWrappers = document.querySelectorAll(".link-wrapper");
-      
       // copy link button //
       linkWrappers.forEach((element) => {
         const button = element.querySelector(".copybutton");
@@ -77,9 +75,9 @@ function checkURL() {
   });
 }
 
-//button shorten it //
-const shorten = document.querySelector("#link-shorten");
-const formShorten = document.querySelector("#urlinput");
+//button shorton it //
+const shorten = document.querySelector("#js-shorten");
+const formShorten = document.querySelector("#link-shorten");
 
 formShorten.addEventListener("submit", (e) => {
   e.preventDefault();
